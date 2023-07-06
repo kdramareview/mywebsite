@@ -492,7 +492,8 @@
 							html += 'button {display:none}';
 							html += '</style>';
 							html += '</head><body>';
-							html += '<h1>Checkout Bill</h1>';
+							html += '<h1>'+ garagename +'</h1>';
+							html += '<h2>Checkout Bill</h2>';
 							html += generateTableHtml('print_final_bill',6,true);
 							html += '</body></html>';
 							printWindow.document.open();
