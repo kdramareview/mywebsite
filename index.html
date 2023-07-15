@@ -3,12 +3,41 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Check and Validate google sheet and table  Doctor</title>
-		<style type="text/css">
+	<title>Check script Display</title>
+	<style type="text/css">
+			/*page1*/
+			.page1_class1{
+			    display:none;
+
+			}
+			.page1_class1-off{
+			    display: none;
+			  }
+
+
+			/*page2*/
+			.page2_class1{
+			    display: none;
+			  }
+
+			.page2_id1-off{
+			    display:none;
+			}
+			.page3_class3{
+			    display:none;
+
+			}
+			.page3_class3-off{
+			    display: none;
+			  }
 			*
       {margin: 0;
       padding: 0;
       box-sizing: border-box;}
+      .vcheckin_off
+      {
+    		display: none;
+      }
       .container
       {
         width: 100%;
@@ -161,174 +190,362 @@
 				background: lightcoral;
 				color: white;
 				display: inline-flex;
-			}
+			}	
+	</style>
+	<script>
 		
-		</style>
+ 
+		function function1()
+				{ 
+		  		document.getElementById("page2_id1").className = "page2_id1-off";
+		  		document.getElementById("page1_id1").className = "page1_id1"; 
+				}
+		function function2()
+				{
+			    document.getElementById("page1_id1").className = "page1_class1-off";
+			    document.getElementById("page2_id1").className = "page2_id1";
+				}
+		function function3()
+				{
+					document.getElementById("page3_id3").className = "page3_class3-off";	
+				}
+	</script>
+	
 </head>
 <body>
-	<div class="container">
+	<div class="container;page3_class3"  id="page3_id3">
 		<nav class="fixed-nav">
-  		<ul class="nav-menu">
-		    <li><a href="#checkinform" > Vehical Check-in </a></li>
-		    <li><a href="#genratebil">  Genrate Bill </a></li>
-		    <li><a href="#checkbill" > Print and Share Bill </a></li>
-		  </ul>
-		</nav>
-		</div>
-	<div class="container" id="checkinform"  style= "flex-direction: column;">
-			<form autocomplete="off" method="post" id="personal-form" name = "google-sheet" onsubmit="event.preventDefault();addnamecontact()">
-			<h3><center>Vehical Check-in </center></h3>
-				<input type="text" id="garagename" name="garagename" placeholder="Enter garage Name"  		maxlength="20" required>
-		  	<input type="date" id="datetoday" name="datetoday" placeholder="Select Date" 
-		  	 required>
-		  	<input type="text" id="vehicalnumber" name="vehicalnumber" placeholder="Enter Vehical Number" maxlength="10" required>
-		  	<input type="text" id="name" name="name" placeholder="type your name" 
-		  		maxlength="20"	required>
-		  	<!--input type="email" id="email" name="email" placeholder="type your email"-->
-		  	<input type="text" id="contact" name="mobile" placeholder="type contact number" 					maxlength="10" required>
-		  	<select name="servicetype" id="servicetype" required>
-			  	<option value="no option selected">Select Service Option</option>
-			  	<option value="regular">Regular</option>
-			  	<option value="repair">Repair</option>
-			  	<option value="quickfix">Quick Fix</option>
-			  </select>
-
-		  	<textarea rows="4" placeholder="enter your comment" name="message" id="messagee"></textarea>
-
-	 			<div style="display: flex;align-items: center;justify-content: space-between; width:100%;">new:<input type="radio" id="customertype" name="customertype" value="new" >
-			  repeat:<input type="radio" id="customertype" name="customertype" value="repeat">
-				</div>
-				<br>
-				<div style="display: flex;align-items: center;justify-content: space-between; width:100%;">
-				<button type="reset" class="reset">Reset</button>
-		  	<button type="submit" name="submit">Save</button>
-		  	</div>
-			</form>
-			<center>
-			<div class="container" >
-			<button onclick="shareEnquiryWhatsApp()" style="background: lightcoral;display: block;padding: 10px 20px;color: white;"> Share on Whatsapp </button>
-			</div>
+		<center> <h2>Select Your Language <br> भाषा का चयन करें </h2>
+		<input type="button" value="English" onClick="function1();function3();">
+		<input type="button" value="हिंदी" onclick="function2();function3();">
 		</center>
+		</nav>
 	</div>
-		<hr>
-	<div class="container" id="genratebil">
-		    <form id="item-form" autocomplete="off" method="post" name = "item-form" onsubmit="event.preventDefault(); addBillItem();">
-		    	 Date:
-		      	<input type="date" id="date-today" name="datetoday" placeholder="Select Date" required>
-		    	Garage:
-		    		<input type="text" id="garage-name" name="garagename" placeholder="Enter garage Name" maxlength="20" required>
-		    	Vehical Number:
-		    		<input type="text" id="vehical-number" name="vehicalnumbers" placeholder="Enter Vehical Number" maxlength="10" required>
-	    		Owner Contact:
-		    		<input type="text" id="owner-number" name="ownernumbers" placeholder="Enter owner Number" maxlength="10" required>
-		      Item Name:
-		       	<input type="text" id="item-name" name = "itemname" placeholder="enter item name" maxlength="20"required>
-		      Quantity:
-		       	<input type="number" id="item-quantity" name = "itemquantity"placeholder="enter item quantity" max="100" required>
-		      Price: 
-		      	<input type="number" id="item-price" name ="itemprice" placeholder="enter item price" max="10000" required>
-		        <button type="submit" name="submit" >Add Item</button>
-		        <button type="reset" class="reset">Reset</button>
-			</form>
-	</div>
-	<hr>
-  <div class="container" id= "checkbill">
-		<table id="print_final_bill">
-          <caption>Bill</caption>
-          <thead>
-            <tr style="height:40px;">
-              <!--th id="header-date" class="date"></th>
-    		  		<th id="header-name" class="name"></th>
-    		  		<th id="header-vehical" class="name"></th>
-              <th id="header-contact" class="phone"></th>
-              <th id="header-garage" class="name"></th-->
-              <th  class="name"> Date</th> <!-- id="header-name"-->
-              <th id="header-date" class="date"></th>
-    		  		<th id="header-vehical" class="name"></th>
-    		  		<th class="name">Contact No</th> <!-- id="header-garage"-->
-              <th id="header-contact" class="phone"></th>
-            </tr>
-            <tr>
-              <th>Row ID</th>
-              <th>Item</th>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th>Item Total</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody id="bill-items">
-            <!-- Dynamic rows will be added here -->
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colspan="4" class="total">Total</td>
-              <td id="total-amount" class="total">₹0</td>
-              <td></td>
-            </tr>
-          </tfoot>
-        </table> 	
-	</div>
-		 <!-- added new form for final summary capture -->
-  <div class="container"  >
-	  <form id="total-form">
-	  	<input type="date" id="total-date" name="totaldate" value="" readonly style="display: none;">
-	   	<input type="text" id="total-garage" name="totalgarage" value="" readonly style="display: none;">
-	   	<input type="text" id="total-vname" name="totalvname" value="" readonly style="display: none;">
-	   	<input type="number" id="total-input" name="totalinput" value="0" readonly style="display: none;">
-	   	<center>
-	   	<div  style="display: flex;align-items: center;justify-content: space-between; width:100%;">
-      		  <button onclick="printOutputBill()" style="background: lightcoral;">Print Bill</button>
-	    			<button type= "submit" name="submit" onclick="sharePDFWhatsApp()" style="background: lightcoral;">Share Bill via WhatsApp </button>
-	    			<button onclick="resetForm()" style="background: lightcoral;">Reset Bill</button> 
-      </div>
-  		</center>
-    </form>
-	</div>
-  
-	<script>	
-	    
-			const scriptURL = 'https://script.google.com/macros/s/AKfycbxk2qXfqYW35EHK646WKgxFQZlNPsqQ47bJ63L8QI0FMZLcANvGc-1XD4cLML4tC3Py/exec'
-      const form = document.forms['google-sheet']
-          
-      form.addEventListener('submit', e => {
-        e.preventDefault()
-        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-      //.then(response => alert("Enquiry Genrated"))
-        .catch(error => console.error('Error!', error.message))
-        })
+	
+	<!--page2-->
+	
+		<div class="page1_class1" id="page1_id1"> 
+		    <div class="container">
+					<nav class="fixed-nav">
+			  		<ul class="nav-menu">
+					    <li><a href="#checkinform" > Vehical Check-in </a></li>
+					    <li><a href="#genratebil">  Genrate Bill </a></li>
+					    <li><a href="#checkbill" > Print and Share Bill </a></li>
+					    <li><a><input type="submit" value="हिंदी" onclick="function2()"></a></li>
+					  </ul>
+					</nav>
+				</div>
+					<br id="checkinform" >
+				<div class="container" class="vcheckin_off" id="vcheckin" style= "flex-direction: column;">
+						<form autocomplete="off" method="post" id="personal-form" name = "google-sheet" onsubmit="event.preventDefault();addnamecontact()">
+						<h3><center>Vehical Check-in </center></h3>
+							<input type="text" id="garagename" name="garagename" placeholder="Enter garage Name"  		maxlength="20" required>
+					  	<input type="date" id="datetoday" name="datetoday" placeholder="Select Date" 
+					  	 required>
+					  	<input type="text" id="vehicalnumber" name="vehicalnumber" placeholder="Enter Vehical Number" maxlength="10" required>
+					  	<input type="text" id="name" name="name" placeholder="type your name" 
+					  		maxlength="20"	required>
+					  	<!--input type="email" id="email" name="email" placeholder="type your email"-->
+					  	<input type="text" id="contact" name="mobile" placeholder="type contact number" 					maxlength="10" required>
+					  	<select name="servicetype" id="servicetype" required>
+						  	<option value="no option selected">Select Service Option</option>
+						  	<option value="regular">Regular</option>
+						  	<option value="repair">Repair</option>
+						  	<option value="quickfix">Quick Fix</option>
+						  </select>
 
-      const scriptURL3 = 'https://script.google.com/macros/s/AKfycbyTLYepu6oQh5DrG2-CQ4Q2MTc-5UCkziHYvdwLY7ZMk6ZxJevyaXVQeuZasOcWBPd3/exec'
-      const form3 = document.forms['total-form']
-        form3.addEventListener('submit', e => {
-    		e.preventDefault()
-        fetch(scriptURL3, { method: 'POST', body: new FormData(form3)})
-      //.then(response => alert("Enquiry Genrated"))
-          .catch(error => console.error('Error!', error.message))
-         })
+					  	<textarea rows="4" placeholder="enter your comment" name="message" id="messagee"></textarea>
+
+				 			<div style="display: flex;align-items: center;justify-content: space-between; width:100%;">new:<input type="radio" id="customertype" name="customertype" value="new" >
+						  repeat:<input type="radio" id="customertype" name="customertype" value="repeat">
+							</div>
+							<br>
+							<div style="display: flex;align-items: center;justify-content: space-between; width:100%;">
+							<button type="reset" class="reset">Reset</button>
+					  	<button type="submit" name="submit">Save</button>
+					  	</div>
+						</form>
+						<center>
+						<div class="container" >
+						<button onclick="shareEnquiryWhatsApp()" style="background: lightcoral;display: block;padding: 10px 20px;color: white;"> Share on Whatsapp </button>
+						</div>
+					</center>
+				</div>
+				<br id= "checkbill">
+				<hr>
+			  <div class="container" >
+			  	<hr>
+					<table id="print_final_bill">
+			          <caption style="border: 1px solid black; background-color: white;">Bill</caption>
+			          <thead>
+			            <tr style="height:40px;">
+			              <!--th id="header-date" class="date"></th>
+			    		  		<th id="header-name" class="name"></th>
+			    		  		<th id="header-vehical" class="name"></th>
+			              <th id="header-contact" class="phone"></th>
+			              <th id="header-garage" class="name"></th-->
+			              <th  class="name"> Date</th> <!-- id="header-name"-->
+			              <th id="header-date" class="date"></th>
+			    		  		<th id="header-vehical" class="name"></th>
+			    		  		<th class="name">Contact No</th> <!-- id="header-garage"-->
+			              <th id="header-contact" class="phone"></th>
+			            </tr>
+			            <tr>
+			              <th>Row ID</th>
+			              <th>Item</th>
+			              <th>Quantity</th>
+			              <th>Price</th>
+			              <th>Item Total</th>
+			              <th>Action</th>
+			            </tr>
+			          </thead>
+			          <tbody id="bill-items">
+			            <!-- Dynamic rows will be added here -->
+			          </tbody>
+			          <tfoot>
+			            <tr>
+			              <td colspan="4" class="total">Total</td>
+			              <td id="total-amount" class="total">₹0</td>
+			              <td></td>
+			            </tr>
+			          </tfoot>
+			        </table> 	
+				</div>
+					 <!-- added new form for final summary capture -->
+			  <div class="container"  >
+				  <form id="total-form">
+				  	<input type="date" id="total-date" name="totaldate" value="" readonly style="display: none;">
+				   	<input type="text" id="total-garage" name="totalgarage" value="" readonly style="display: none;">
+				   	<input type="text" id="total-vname" name="totalvname" value="" readonly style="display: none;">
+				   	<input type="number" id="total-input" name="totalinput" value="0" readonly style="display: none;">
+				   	<center>
+				   	<div  style="display: flex;align-items: center;justify-content: space-between; width:100%;">
+			      		  <button onclick="printOutputBill()" style="background: lightcoral;">Print Bill</button>
+				    			<button type= "submit" name="submit" onclick="sharePDFWhatsApp()" style="background: lightcoral;">Share Bill via WhatsApp </button>
+				    			<button onclick="resetForm()" style="background: lightcoral;">Reset Bill</button> 
+			      </div>
+			  		</center>
+			    </form>
+				</div>
+				<br id="genratebil">
+				<div class="container">
+						 <br>
+					    <form id="item-form" autocomplete="off" method="post" name = "item-form" onsubmit="event.preventDefault(); addBillItem();">
+					    	<h3><center>Genrate Bill</center></h3>
+					    	 Date:
+					      	<input type="date" id="date-today" name="datetoday" placeholder="Select Date" required>
+					    	Garage:
+					    		<input type="text" id="garage-name" name="garagename" placeholder="Enter garage Name" maxlength="20" required>
+					    	Vehical Number:
+					    		<input type="text" id="vehical-number" name="vehicalnumbers" placeholder="Enter Vehical Number" maxlength="10" required>
+				    		Owner Contact:
+					    		<input type="text" id="owner-number" name="ownernumbers" placeholder="Enter owner Number" maxlength="10" required>
+					      Item Name:
+					       	<input type="text" id="item-name" name = "itemname" placeholder="enter item name" maxlength="20"required>
+					      Quantity:
+					       	<input type="number" id="item-quantity" name = "itemquantity"placeholder="enter item quantity" max="100" required>
+					      Price: 
+					      	<input type="number" id="item-price" name ="itemprice" placeholder="enter item price" max="10000" required>
+					        <button type="submit" name="submit" >Add Item</button>
+					        <button type="reset" class="reset">Reset</button>
+						</form>
+				</div>
+		</div>
+		<Br>
+		<!--- Hindi Start-->
+		<div class="page2_class1" id="page2_id1" >
+			 	<div class="container">
+				<nav class="fixed-nav">
+					<ul class="nav-menu">
+						<li><a href="#checkinformh">वाहन चेक-इन</a></li>
+						<li><a href="#genratebilh">बिल बनाएं</a></li>
+						<li><a href="#checkbillh">बिल प्रिंट और साझा करें</a></li>
+						<li><a><input type="button" value="English" onClick="function1()"></a><li>
+					</ul>
+				</nav>
+				</div>
+				<br id="checkinformh" >
+				<div class="container" class="vcheckin_off" id="vcheckin" style= "flex-direction: column;">
+					<form autocomplete="off" method="post" id="personal-formh" name = "google-sheeth" onsubmit="event.preventDefault();addnamecontacth()">
+					<h3><center>वाहन चेक-इन</center></h3>
+						<input type="text" id="garagenameh" name="garagename" placeholder="गेराज का नाम" maxlength="20" required>
+				  	<input type="date" id="datetodayh" name="datetoday" placeholder="तारीख" 
+				  	 required>
+				  	<input type="text" id="vehicalnumberh" name="vehicalnumber" placeholder="वाहन नंबर" maxlength="10" required>
+				  	<input type="text" id="nameh" name="name" placeholder="ग्राहक नाम" 
+				  		maxlength="20"	required>
+				  	<input type="text" id="contacth" name="mobile" placeholder="ग्राहक संपर्क नंबर" 					maxlength="10" required>
+				  	<select name="servicetype" id="servicetypeh" required>
+					  	<option value="no option selected">सेवा विकल्प चुनें</option>
+					  	<option value="regular">नियमित</option>
+					  	<option value="repair">मरम्मत</option>
+					  	<option value="quickfix">त्वरित ठिक करें</option>
+					  </select>
+
+				  	<textarea rows="4" placeholder="अपनी टिप्पणी दर्ज करें" name="message" id="messageeh"></textarea>
+
+			 			<div style="display: flex;align-items: center;justify-content: space-between; width:100%;">नया ग्राहक:<input type="radio" id="customertypeh" name="customertype" value="new" >
+					  	पुराना ग्राहक:<input type="radio" id="customertypeh" name="customertype" value="repeat">
+						</div>
+						<br>
+						<div style="display: flex;align-items: center;justify-content: space-between; width:100%;">
+						<button type="reset" class="reset">रीसेट</button>
+				  	<button type="submit" name="submit">सबमिट</button>
+				  	</div>
+					</form>
+					<center>
+					<div class="container" >
+					<button onclick="shareEnquiryWhatsApph()" style="background: lightcoral;display: block;padding: 10px 20px;color: white;"> Share on Whatsapp </button>
+					</div>
+				</center>
+			</div>
+					<br id= "checkbillh">
+					<hr>
+				  <div class="container" >
+				  	<hr>
+					<table id="print_final_billh">
+			          <caption style="border: 1px solid black; background-color: white;">
+			          	<h3>वाहन चेक-आउट बिल</h3>
+			          </caption>
+			          <thead>
+			            <tr style="height:40px;">
+			              <th  class="name"> तारीख</th> 
+			              <th id="header-dateh" class="date"></th>
+			    		  <th id="header-vehicalh" class="name"></th>
+			    		  <th class="name">संपर्क नंबर</th> 
+			              <th id="header-contacth" class="phone"></th>
+			            </tr>
+			            <tr>
+			              <th>पंक्ति ID</th>
+			              <th>वास्तु</th>
+			              <th>परिमाण</th>
+			              <th>दाम</th>
+			              <th>वास्तु कुल</th>
+			              <th>क्रिया</th>
+			            </tr>
+			          </thead>
+			          <tbody id="bill-itemsh">
+			            <!-- Dynamic rows will be added here -->
+			          </tbody>
+			          <tfoot>
+			            <tr>
+			              <td colspan="4" class="total">बिल राशि</td>
+			              <td id="total-amounth" class="total">₹0</td>
+			              <td></td>
+			            </tr>
+			          </tfoot>
+			        </table> 	
+				</div>
+					 <!-- added new form for final summary capture -->
+			  <div class="container"  >
+				  <form id="total-form">
+				  	<input type="date" id="total-date" name="totaldate" value="" readonly style="display: none;">
+				   	<input type="text" id="total-garage" name="totalgarage" value="" readonly style="display: none;">
+				   	<input type="text" id="total-vname" name="totalvname" value="" readonly style="display: none;">
+				   	<input type="number" id="total-input" name="totalinput" value="0" readonly style="display: none;">
+				   	<center>
+				   	<div  style="display: flex;align-items: center;justify-content: space-between; width:100%;">
+			      		  <button onclick="printOutputBillh()" style="background: lightcoral;"> प्रिंट बिल </button>
+				    			<button type= "submit" name="submit" onclick="sharePDFWhatsApph()" style="background: lightcoral;">WhatsApp शेयर करें  </button>
+				    			<button onclick="resetFormh()" style="background: lightcoral;">रीसेट बिल</button> 
+			      </div>
+			  		</center>  
+			    </form> 
+				</div>
+				<br id="genratebilh">
+				<div class="container">
+						 <br>
+					    <form id="item-formh" autocomplete="off" method="post" name = "item-formh" onsubmit="event.preventDefault(); addBillItemh();">
+					    	<h3><center>बिल बनाएं</center></h3>
+					    	 तारीख:
+					      	<input type="date" id="date-todayh" name="datetoday" placeholder="तारीख चुनें" required>
+					    	गेराज नाम:
+					    		<input type="text" id="garage-nameh" name="garagename" placeholder="गेराज का नाम दर्ज करें" maxlength="20" required>
+					    	वाहन नंबरr:
+					    		<input type="text" id="vehical-numberh" name="vehicalnumbers" placeholder="वाहन नंबर दर्ज करें" maxlength="10" required>
+				    		वाहन मालिक संपर्क:
+					    		<input type="text" id="owner-numberh" name="ownernumbers" placeholder="संपर्क नंबर टाइप करें" maxlength="10" required>
+					      वास्तु का नाम:
+					       	<input type="text" id="item-nameh" name = "itemname" placeholder="enter item name" maxlength="20"required>
+					      परिमाण:
+					       	<input type="number" id="item-quantityh" name = "itemquantity"placeholder="enter item quantity" max="100" required>
+					      दाम: 
+					      	<input type="number" id="item-priceh" name ="itemprice" placeholder="enter item price" max="10000" required>
+					        <button type="submit" name="submit" >वास्तु जोड़ें</button>
+					        <button type="reset" class="reset">रीसेट</button>
+						</form>
+				</div>
+		</div> <!--- Hindi end-->
+
+
+		<script>	
+	    
+				const scriptURL = 'https://script.google.com/macros/s/AKfycbxwUNN_lDdN1_8HP6oUmWv7rGHGkD-AD6TbLVzz5FEu_LFT1YQzPz6-13rVJobgk4jIEA/exec'
+      			const form = document.forms['google-sheet']
+          
+			      form.addEventListener('submit', e => {
+			        e.preventDefault()
+			        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+			      //.then(response => alert("Enquiry Genrated"))
+			        .catch(error => console.error('Error!', error.message))
+			        })
+
+			     const formh = document.forms['google-sheeth']
+          
+			      formh.addEventListener('submit', e => {
+			        e.preventDefault()
+			        fetch(scriptURL, { method: 'POST', body: new FormData(formh)})
+			      //.then(response => alert("Enquiry Genrated"))
+			        .catch(error => console.error('Error!', error.message))
+			        })
+
+		    	const scriptURL3 = 'https://script.google.com/macros/s/AKfycbwJw5AU8jUc4c6wYDnQox6uWUuWwqPMSUAZba4UwEAUkwygHMnjQMore0F6lUfWNOw3og/exec'
+		      	const form3 = document.forms['total-form']
+		        form3.addEventListener('submit', e => {
+		    		e.preventDefault()
+		        fetch(scriptURL3, { method: 'POST', body: new FormData(form3)})
+		      	//.then(response => alert("Enquiry Genrated"))
+		          .catch(error => console.error('Error!', error.message))
+		         })
 					
-			const scriptURL2 = 'https://script.google.com/macros/s/AKfycbwo-9NZzVhvq-vidl0Miv-sD9ub1XW6h2OlQOrl0pgiNz_xYZfCb6tdgOha-dhhY7V7/exec'
-			const form2 = document.forms['item-form']
+				const scriptURL2 = 'https://script.google.com/macros/s/AKfycbwn6WWmm-oF8D8mlMGAhWmsvo7rEDYJPjSYvKdNUhUWxZdCkGcKDmJSJ8JlrT057maAcg/exec'
+				const form2 = document.forms['item-form']
 			          	
 				form2.addEventListener('submit', e => {
 				e.preventDefault()
 				fetch(scriptURL2, { method: 'POST', body: new FormData(form2)})
-			//.then(response => alert("Enquiry Genrated")) 
+				//.then(response => alert("Enquiry Genrated")) 
 				.catch(error => console.error('Error!', error.message))
 				resetItemForm() 
 				})
 
-			function resetItemForm() 
+				const form2h = document.forms['item-formh']
+			          	
+				form2h.addEventListener('submit', e => {
+				e.preventDefault()
+				fetch(scriptURL2, { method: 'POST', body: new FormData(form2h)})
+				//.then(response => alert("Enquiry Genrated")) 
+				.catch(error => console.error('Error!', error.message))
+				resetItemForm() 
+				})
+
+				function resetItemForm() 
 			    {	const itemNameInput = document.getElementById('item-name');
 					const itemQuantityInput = document.getElementById('item-quantity');
 					const itemPriceInput = document.getElementById('item-price');
+					const itemNameInputh = document.getElementById('item-nameh');
+					const itemQuantityInputh = document.getElementById('item-quantityh');
+					const itemPriceInputh = document.getElementById('item-priceh');
 						itemNameInput.value = '';
 						itemQuantityInput.value = '';
 						itemPriceInput.value = '';
+						itemNameInputh.value = '';
+						itemQuantityInputh.value = '';
+						itemPriceInputh.value = '';
 					}
 
-			function convertInputsToUppercase() 
-			{
+				function convertInputsToUppercase() 
+				{
 				var inputs = document.getElementsByTagName('input');
 				var textareas = document.getElementsByTagName('textarea');
 				for (var i = 0; i < inputs.length; i++) 
@@ -346,327 +563,474 @@
 					});
 					textareas[i].value = textareas[i].value.toUpperCase();
 					}
-			}
+				}
 
-			window.addEventListener('DOMContentLoaded', convertInputsToUppercase);
+				window.addEventListener('DOMContentLoaded', convertInputsToUppercase);
 				
-	    var rowbillId = 1;
-			var totalAmount = 0;
-			var name;
-			var contact;
-			var vehicalnumber;
-			var garagename;
-			var datetoday;
-			var messagee
-			var contacto;
-				/*var currentDate = new Date();
-				var options = { year: 'numeric', month: '2-digit', day: '2-digit' };
-				var formattedDate = currentDate.toLocaleDateString(undefined, options);
-				*/
-			name = document.getElementById('name').value;
-			contact =  document.getElementById('contact').value;
-			vehicalnumber = document.getElementById('vehical-number').value;
-			garagename = document.getElementById('garage-name').value;
-			datetoday = document.getElementById('date-today').value;
-			messagee = document.getElementById('messagee').value; // added now 
-			contacto =  document.getElementById('owner-number').value;
-    		
-			function addnamecontact() 
-		    {// Get input values
-    		name = document.getElementById('name').value;
-    		contact = '91'+ document.getElementById('contact').value;
-    		//vehicalnumber = document.getElementById('vehicalnumber').value;
-    		//garagename = document.getElementById('garagename').value;
-    		//datetoday =  document.getElementById('datetoday').value;
-    		messagee = document.getElementById('messagee').value;
-          	// Validate inputs
-          	if (name === '' || contact === '' ) {
-            alert('Please fill in all fields');
-            return;
-          	}
-			// Update name and contact fields
-	        //document.getElementById('header-name').textContent = name;
-	        document.getElementById('header-contact').textContent = contact;
-	    		document.getElementById('header-vehical').textContent = vehicalnumber;
-	    		//document.getElementById('header-garage').textContent = garagename;
-	    		document.getElementById('header-date').textContent = datetoday;
-	      }
+	    		var rowbillId = 1;
+				var totalAmount = 0;
+				var name;
+				var contact;
+				var vehicalnumber;
+				var garagename;
+				var datetoday;
+				var messagee
+				var contacto;
 					
-			   
-			function addBillItem() 
-    	{// Get input values
-				var itemName = document.getElementById('item-name').value;
-      	var itemQuantity = document.getElementById('item-quantity').value;
-		  	var itemPrice = document.getElementById('item-price').value;
-		  	var vname = document.getElementById('vehical-number').value;
-				var billdate = document.getElementById('date-today').value; //added new
-				var garagenameb = document.getElementById('garage-name').value;
-  		//var contacto = document.getElementById('owner-number').value;
-			// Validate inputs
-	      if (itemName === '' || itemQuantity === '' || itemPrice === '') 
-	      {
-	      alert('Please fill in all fields');
-	      return;
-	      }
-
-			// Create a new row for bill
-      	var row = document.createElement('tr');
-      	var idCell = document.createElement('td');
-      	var nameCell = document.createElement('td');
-      	var quantityCell = document.createElement('td');
-      	var priceCell = document.createElement('td');
-      	var totalCell = document.createElement('td');
-      	var actionCell = document.createElement('td');
-	      var deleteBtn = document.createElement('button');
-
-			// Set values for new row bill 
-		    idCell.textContent = rowbillId;
-		    nameCell.textContent = itemName;
-		    quantityCell.textContent = itemQuantity;
-		    priceCell.textContent = itemPrice;
-		    var itemTotal = parseFloat(itemPrice) * parseInt(itemQuantity);
-		    totalCell.textContent = '₹' + itemTotal.toFixed(2);
-		    deleteBtn.textContent = 'Delete';
-		    deleteBtn.classList.add('delete-btn');
-		    deleteBtn.onclick = function() {
-		    deleteBillItem(row);
-		    };
-
-			// Set values for the Total Amount, Vname, and Billdate fields in the form
-                                      
-        document.getElementById('total-vname').value = vname;
-        document.getElementById('total-date').value = billdate;
-        document.getElementById('total-garage').value = garagenameb; 
-      //added new 
-	      vehicalnumber = document.getElementById('vehical-number').value;
+				name = document.getElementById('name').value;
+				contact =  document.getElementById('contact').value;
+				vehicalnumber = document.getElementById('vehical-number').value;
 				garagename = document.getElementById('garage-name').value;
-				datetoday =  document.getElementById('date-today').value;
-			  contacto = '91'+ document.getElementById('owner-number').value;
-				document.getElementById('header-vehical').textContent = vehicalnumber;
-				//document.getElementById('header-garage').textContent = garagename;
-				document.getElementById('header-date').textContent = datetoday;
-				document.getElementById('header-contact').textContent = contacto;
-			// end new 
-			// Append cells to the row bill
-				row.appendChild(idCell);
-				row.appendChild(nameCell);
-				row.appendChild(quantityCell);
-				row.appendChild(priceCell);
-				row.appendChild(totalCell);
-				row.appendChild(actionCell);
-				actionCell.appendChild(deleteBtn);
+				datetoday = document.getElementById('date-today').value;
+				messagee = document.getElementById('messagee').value; // added now 
+				contacto =  document.getElementById('owner-number').value;
+    			nameh = document.getElementById('nameh').value;
+    			contacth =  document.getElementById('contacth').value
+    			vehicalnumberh = document.getElementById('vehicalnumberh').value;
+    			messageeh = document.getElementById('messageeh').value;
+    			garagenameh = document.getElementById('garagenameh').value;
+					function addnamecontact() 
+			    {// Get input values
+		    		name = document.getElementById('name').value;
+		    		contact = '91'+ document.getElementById('contact').value;
+		    		
+		    		messagee = document.getElementById('messagee').value;
+		          	
+			        document.getElementById('header-contact').textContent = contact;
+			    	document.getElementById('header-vehical').textContent = vehicalnumber;
+			    	document.getElementById('header-date').textContent = datetoday;
+		      	}
+		      		function addnamecontacth() 
+			    {// Get input values
+		    		nameh = document.getElementById('nameh').value;
+		    		contacth = '91'+ document.getElementById('contacth').value;
+		    		messageeh = document.getElementById('messageeh').value;
+		          	vehicalnumberh = document.getElementById('vehicalnumberh').value;
+		          	garagenameh = document.getElementById('garagenameh').value;
+			        //document.getElementById('header-contact').textContent = contact;
+			    	//document.getElementById('header-vehical').textContent = vehicalnumber;
+			    	//document.getElementById('header-date').textContent = datetoday;
+		      	}
+				
+				function addBillItemh() 
+		    	{// Get input values
+					var itemName = document.getElementById('item-nameh').value;
+			      	var itemQuantity = document.getElementById('item-quantityh').value;
+					var itemPrice = document.getElementById('item-priceh').value;
+					var vname = document.getElementById('vehical-numberh').value;
+					var billdate = document.getElementById('date-todayh').value; //added new
+					var garagenameb = document.getElementById('garage-nameh').value;
+			  		
+						// Create a new row for bill
+			      	var row = document.createElement('tr');
+			      	var idCell = document.createElement('td');
+			      	var nameCell = document.createElement('td');
+			      	var quantityCell = document.createElement('td');
+			      	var priceCell = document.createElement('td');
+			      	var totalCell = document.createElement('td');
+			      	var actionCell = document.createElement('td');
+				    var deleteBtn = document.createElement('button');
 
-			// Append the row to the bill items table
-				document.getElementById('bill-items').appendChild(row);
+					// Set values for new row bill 
+				    idCell.textContent = rowbillId;
+				    nameCell.textContent = itemName;
+				    quantityCell.textContent = itemQuantity;
+				    priceCell.textContent = itemPrice;
+				    var itemTotal = parseFloat(itemPrice) * parseInt(itemQuantity);
+				    totalCell.textContent = '₹' + itemTotal.toFixed(2);
+				    deleteBtn.textContent = 'Delete';
+				    deleteBtn.classList.add('delete-btn');
+				    deleteBtn.onclick = function() {
+				    deleteBillItemh(row);
+				    };
 
-			// Update total amount
-				totalAmount += itemTotal;
-				document.getElementById('total-amount').textContent = '₹' + totalAmount.toFixed(2);
+					// Set values for the Total Amount, Vname, and Billdate fields in the form
+                                      
+			        document.getElementById('total-vname').value = vname;
+			        document.getElementById('total-date').value = billdate;
+			        document.getElementById('total-garage').value = garagenameb; 
+			      	//added new 
+	      			vehicalnumber = document.getElementById('vehical-numberh').value;
+					garagename = document.getElementById('garage-nameh').value;
+					datetoday =  document.getElementById('date-todayh').value;
+			  		contacto = '91'+ document.getElementById('owner-numberh').value;
+					document.getElementById('header-vehicalh').textContent = vehicalnumber;
+					//document.getElementById('header-garage').textContent = garagename;
+					document.getElementById('header-dateh').textContent = datetoday;
+					document.getElementById('header-contacth').textContent = contacto;
+					// end new 
+					// Append cells to the row bill
+					row.appendChild(idCell);
+					row.appendChild(nameCell);
+					row.appendChild(quantityCell);
+					row.appendChild(priceCell);
+					row.appendChild(totalCell);
+					row.appendChild(actionCell);
+					actionCell.appendChild(deleteBtn);
 
-			// Reset the form
-			//document.getElementById('item-form').reset();
-			// Increment row ID
-				rowbillId++;
-				document.getElementById('total-input').value = totalAmount.toFixed(2);
-    	}
+					// Append the row to the bill items table
+					document.getElementById('bill-itemsh').appendChild(row);
 
-			// Separate function for deleting a row from the bill
-			function deleteBillItem(row) 
-			{
-				var priceCell = row.querySelector('td:nth-child(4)');
-				var itemPrice = parseFloat(priceCell.textContent);
-				var quantityCell = row.querySelector('td:nth-child(3)');
-				var itemQuantity = parseInt(quantityCell.textContent);
-				var rowTotal = itemPrice * itemQuantity;
+					// Update total amount
+					totalAmount += itemTotal;
+					document.getElementById('total-amounth').textContent = '₹' + totalAmount.toFixed(2);
 
-			// Update total amount
-				totalAmount -= rowTotal;
-				document.getElementById('total-amount').textContent = '₹' + totalAmount.toFixed(2);
+					// Reset the form
+					//document.getElementById('item-form').reset();
+					// Increment row ID
+					rowbillId++;
+					document.getElementById('total-input').value = totalAmount.toFixed(2);
+    			}
 
-			// Remove the row from the bill items table
-				row.remove();
+    			function deleteBillItemh(row) 
+				{
+						var priceCell = row.querySelector('td:nth-child(4)');
+						var itemPrice = parseFloat(priceCell.textContent);
+						var quantityCell = row.querySelector('td:nth-child(3)');
+						var itemQuantity = parseInt(quantityCell.textContent);
+						var rowTotal = itemPrice * itemQuantity;
 
-			// Reset row ID
-				var rowsb = document.querySelectorAll('#bill-items tr');
-				rowbillId = rowsb.length + 1;
-					for (var i = 0; i < rowsb.length; i++) {
-					rowsb[i].querySelector('td:first-child').textContent = i + 1;
-				}
-				document.getElementById('total-input').value = totalAmount.toFixed(2);
-			}
+					// Update total amount
+						totalAmount -= rowTotal;
+						document.getElementById('total-amounth').textContent = '₹' + totalAmount.toFixed(2);
+
+					// Remove the row from the bill items table
+						row.remove();
+
+					// Reset row ID
+						var rowsb = document.querySelectorAll('#bill-itemsh tr');
+						rowbillId = rowsb.length + 1;
+							for (var i = 0; i < rowsb.length; i++) {
+							rowsb[i].querySelector('td:first-child').textContent = i + 1;
+						}
+						document.getElementById('total-input').value = totalAmount.toFixed(2);
+				}	
+			   
+				function addBillItem() 
+		    	{// Get input values
+							var itemName = document.getElementById('item-name').value;
+			      	var itemQuantity = document.getElementById('item-quantity').value;
+					  	var itemPrice = document.getElementById('item-price').value;
+					  	var vname = document.getElementById('vehical-number').value;
+							var billdate = document.getElementById('date-today').value; //added new
+							var garagenameb = document.getElementById('garage-name').value;
+			  		
+						// Create a new row for bill
+			      	var row = document.createElement('tr');
+			      	var idCell = document.createElement('td');
+			      	var nameCell = document.createElement('td');
+			      	var quantityCell = document.createElement('td');
+			      	var priceCell = document.createElement('td');
+			      	var totalCell = document.createElement('td');
+			      	var actionCell = document.createElement('td');
+				    var deleteBtn = document.createElement('button');
+
+					// Set values for new row bill 
+				    idCell.textContent = rowbillId;
+				    nameCell.textContent = itemName;
+				    quantityCell.textContent = itemQuantity;
+				    priceCell.textContent = itemPrice;
+				    var itemTotal = parseFloat(itemPrice) * parseInt(itemQuantity);
+				    totalCell.textContent = '₹' + itemTotal.toFixed(2);
+				    deleteBtn.textContent = 'Delete';
+				    deleteBtn.classList.add('delete-btn');
+				    deleteBtn.onclick = function() {
+				    deleteBillItem(row);
+				    };
+
+					// Set values for the Total Amount, Vname, and Billdate fields in the form
+                                      
+			        document.getElementById('total-vname').value = vname;
+			        document.getElementById('total-date').value = billdate;
+			        document.getElementById('total-garage').value = garagenameb; 
+			      	//added new 
+	      			vehicalnumber = document.getElementById('vehical-number').value;
+					garagename = document.getElementById('garage-name').value;
+					datetoday =  document.getElementById('date-today').value;
+			  		contacto = '91'+ document.getElementById('owner-number').value;
+					document.getElementById('header-vehical').textContent = vehicalnumber;
+					//document.getElementById('header-garage').textContent = garagename;
+					document.getElementById('header-date').textContent = datetoday;
+					document.getElementById('header-contact').textContent = contacto;
+					// end new 
+					// Append cells to the row bill
+					row.appendChild(idCell);
+					row.appendChild(nameCell);
+					row.appendChild(quantityCell);
+					row.appendChild(priceCell);
+					row.appendChild(totalCell);
+					row.appendChild(actionCell);
+					actionCell.appendChild(deleteBtn);
+
+					// Append the row to the bill items table
+					document.getElementById('bill-items').appendChild(row);
+
+					// Update total amount
+					totalAmount += itemTotal;
+					document.getElementById('total-amount').textContent = '₹' + totalAmount.toFixed(2);
+
+					// Reset the form
+					//document.getElementById('item-form').reset();
+					// Increment row ID
+					rowbillId++;
+					document.getElementById('total-input').value = totalAmount.toFixed(2);
+    			}
+
+					// Separate function for deleting a row from the bill
+					function deleteBillItem(row) 
+					{
+						var priceCell = row.querySelector('td:nth-child(4)');
+						var itemPrice = parseFloat(priceCell.textContent);
+						var quantityCell = row.querySelector('td:nth-child(3)');
+						var itemQuantity = parseInt(quantityCell.textContent);
+						var rowTotal = itemPrice * itemQuantity;
+
+					// Update total amount
+						totalAmount -= rowTotal;
+						document.getElementById('total-amount').textContent = '₹' + totalAmount.toFixed(2);
+
+					// Remove the row from the bill items table
+						row.remove();
+
+					// Reset row ID
+						var rowsb = document.querySelectorAll('#bill-items tr');
+						rowbillId = rowsb.length + 1;
+							for (var i = 0; i < rowsb.length; i++) {
+							rowsb[i].querySelector('td:first-child').textContent = i + 1;
+						}
+						document.getElementById('total-input').value = totalAmount.toFixed(2);
+					}
 							
-			// Update name and contact fields
-				//document.getElementById('header-name').textContent = name;
-				document.getElementById('header-contact').textContent = contact;
-				document.getElementById('header-vehical').textContent = vehicalnumber;
-				document.getElementById('header-date').textContent =  datetoday; 
-				//document.getElementById('header-garage').textContent = garagename; 
-				document.getElementById('header-contact').textContent = contacto;
-			function printOutputBill() 
-			{
-				var printWindow = window.open('', '_blank');
-				var html = '<html><head><title>Print</title>';
-						html += '<style>';
-				// CSS styles for the print function
-						html += 'body { font-family: Arial, sans-serif; }';
-						html += 'h1 { text-align: center; }';
-						html += 'table { width: 100%; border-collapse: collapse; border: 1px solid #ccc; }';
-						html += 'th, td { padding: 5px; border: 1px solid #ccc;text-align:center }';
-						html += 'img { max-width: 100%; }';
-						html += 'button {display:none}';
-						html += '</style>';
-						html += '</head><body>';
-						html += '<h1>'+ garagename +'</h1>';
-				//		html += '<h3>Checkout Bill</h3>';
-						html += generateTableHtml('print_final_bill',6,true);
-						html += '<h3>Visit Again !!!</h3>';
-						html += '</body></html>';
-						printWindow.document.open();
-						printWindow.document.write(html);
-						printWindow.document.close();
-						printWindow.print();
-			}
-    
-   		// Generate HTML for the output table with column restriction and optional column omission
-			function generateTableHtml(tableId, columnRestriction, omitDeleteColumn) 
-			{
-				  var table = document.getElementById(tableId);
-				  var clonedTable = table.cloneNode(true);
-				  var rows = clonedTable.getElementsByTagName('tr');
-				  for (var i = 0; i < rows.length; i++) {
-					var cells = rows[i].getElementsByTagName('td');
-					if (cells.length > columnRestriction) {
-					  for (var j = cells.length - 1; j >= columnRestriction; j--) {
-						cells[j].remove();
-					  }
+					// Update name and contact fields
+						//document.getElementById('header-name').textContent = name;
+						document.getElementById('header-contact').textContent = contact;
+						document.getElementById('header-vehical').textContent = vehicalnumber;
+						document.getElementById('header-date').textContent =  datetoday; 
+						document.getElementById('header-contact').textContent = contacto;
+					function printOutputBill() 
+					{
+						var printWindow = window.open('', '_blank');
+						var html = '<html><head><title>Print</title>';
+								html += '<style>';
+						// CSS styles for the print function
+								html += 'body { font-family: Arial, sans-serif; }';
+								html += 'h1 { text-align: center; }';
+								html += 'table { width: 100%; border-collapse: collapse; border: 1px solid #ccc; }';
+								html += 'th, td { padding: 5px; border: 1px solid #ccc;text-align:center }';
+								html += 'img { max-width: 100%; }';
+								html += 'button {display:none}';
+								html += '</style>';
+								html += '</head><body>';
+								html += '<h1>'+ garagename +'</h1>';
+						//		html += '<h3>Checkout Bill</h3>';
+								html += generateTableHtml('print_final_bill',6,true);
+								html += '<h3>Visit Again !!!</h3>';
+								html += '</body></html>';
+								printWindow.document.open();
+								printWindow.document.write(html);
+								printWindow.document.close();
+								printWindow.print();
 					}
-					if (omitDeleteColumn && cells.length > 0) {
-					  cells[cells.length - 1].remove(); // Remove the last cell (Delete column)
-					}
-				  }
-				  var headers = clonedTable.getElementsByTagName('th');
-				  if (omitDeleteColumn && headers.length > 0) {
-					headers[headers.length - 1].remove(); // Remove the last header (Delete column header)
-				  }
-				  return clonedTable.outerHTML;
-			}	
+		    		
+					function printOutputBillh() 
+					{
+						var printWindow = window.open('', '_blank');
+						var html = '<html><head><title>Print</title>';
+								html += '<style>';
+						// CSS styles for the print function
+								html += 'body { font-family: Arial, sans-serif; }';
+								html += 'h1 { text-align: center; }';
+								html += 'table { width: 100%; border-collapse: collapse; border: 1px solid #ccc; }';
+								html += 'th, td { padding: 5px; border: 1px solid #ccc;text-align:center }';
+								html += 'img { max-width: 100%; }';
+								html += 'button {display:none}';
+								html += '</style>';
+								html += '</head><body>';
+								html += '<h1>'+ garagename +'</h1>';
+						//		html += '<h3>वाहन चेक-आउट बिल</h3>';
+								html += generateTableHtml('print_final_billh',6,true);
+								html += '<h3>Visit Again !!!</h3>';
+								html += '</body></html>';
+								printWindow.document.open();
+								printWindow.document.write(html);
+								printWindow.document.close();
+								printWindow.print();
+					}	
 
-			function resetForm() 
-			{
-					document.getElementById('personal-form').reset();
-					document.getElementById('item-form').reset();
-					document.getElementById('total-form').reset();
-					document.getElementById('bill-items').innerHTML = '';
-					document.getElementById('total-amount').textContent = '₹0';
-					//document.getElementById('header-name').textContent = '';
-					document.getElementById('header-contact').textContent = '';
-					document.getElementById('header-vehical').textContent = '';
-					document.getElementById('header-date').textContent =  '';
-					//document.getElementById('header-garage').textContent =  '';
-			    rowbillId = 1;
-			    totalAmount = 0;
-    	}
-
-    	function shareEnquiryWhatsApp()  
-    	{
-  		var message = "Dear " + name + ", your vehical " + vehicalnumber + "\n\n submitted  for \n" + messagee;
-  		message += "."+ garagename +" -Thank you";
-
-			var encodedMessage = encodeURIComponent(message);
-			var whatsappURL = "https://api.whatsapp.com/send?phone=" + contact + "&text=" + encodedMessage;
-			window.open(whatsappURL);
-			} 
-
-    	function sharePDFWhatsApp()  
-    	{
-  		var message = "Dear " + "Customer" + ", your vehical " + vehicalnumber + " is ready. Here are the bill details:\n\n" + generateTableText('print_final_bill');
-  		message += "\n\n Bill amount: ₹" + totalAmount.toFixed(2) + ". Please collect the bike."+ garagename +" -Thank you";
-
-			var encodedMessage = encodeURIComponent(message);
-			var whatsappURL = "https://api.whatsapp.com/send?phone=" + contacto + "&text=" + encodedMessage;
-			window.open(whatsappURL);
-			} 
-		// use html table 
-  	// Generate text for the output table
-
-			function generateTableText(tableId) 
-			{
-				var table = document.getElementById(tableId);
-				var text = '';
-						  
-		// Get the second row (index 1) as column headers
-				var headerRow = table.querySelector('thead tr:nth-child(2)');
-				var headerCells = headerRow.getElementsByTagName('th');
-				var columnWidths = [];
-
-		// Calculate the maximum width for each column
-			for (var h = 0; h < headerCells.length - 1; h++) 
-			{ // Exclude the last header (action column header)
-				var cellWidth = headerCells[h].textContent.trim().length;
-				columnWidths.push(cellWidth);
-			}
-
-		// Get the table data rows
-			var rows = table.getElementsByTagName('tr');
-			  for (var i = 0; i < rows.length; i++) 
-				{
-				  var cells = rows[i].getElementsByTagName('td');
-					for (var j = 0; j < cells.length - 1; j++) 
-					{ // Exclude the last column (action column)
-						var cellWidth = cells[j].textContent.trim().length;
-						if (cellWidth > columnWidths[j]) 
-						{
-						  columnWidths[j] = cellWidth;
-						}
-					}
-				}
-
-		// Generate the text with equal spacing
-			for (var h = 0; h < headerCells.length - 1; h++) {
-					text += '|' + padString(headerCells[h].textContent.trim(), columnWidths[h]) + ' ';
+		   			// Generate HTML for the output table with column restriction and optional column omission
+					function generateTableHtml(tableId, columnRestriction, omitDeleteColumn) 
+					{
+						  var table = document.getElementById(tableId);
+						  var clonedTable = table.cloneNode(true);
+						  var rows = clonedTable.getElementsByTagName('tr');
+						  for (var i = 0; i < rows.length; i++) {
+							var cells = rows[i].getElementsByTagName('td');
+							if (cells.length > columnRestriction) {
+							  for (var j = cells.length - 1; j >= columnRestriction; j--) {
+								cells[j].remove();
+							  }
+							}
+							if (omitDeleteColumn && cells.length > 0) {
+							  cells[cells.length - 1].remove(); // Remove the last cell (Delete column)
+							}
 						  }
-				text += '|\n';
+						  var headers = clonedTable.getElementsByTagName('th');
+						  if (omitDeleteColumn && headers.length > 0) {
+							headers[headers.length - 1].remove(); // Remove the last header (Delete column header)
+						  }
+						  return clonedTable.outerHTML;
+					}	
 
-		// Add table border for the column headers
-			for (var h = 0; h < headerCells.length - 1; h++) {
-						    text += '+' + repeatChar('-', columnWidths[h]) + '-';
+					function resetForm() 
+					{
+							document.getElementById('personal-form').reset();
+							document.getElementById('item-form').reset();
+							document.getElementById('total-form').reset();
+							document.getElementById('bill-items').innerHTML = '';
+							document.getElementById('total-amount').textContent = '₹0';
+							document.getElementById('header-contact').textContent = '';
+							document.getElementById('header-vehical').textContent = '';
+							document.getElementById('header-date').textContent =  '';
+							document.getElementById('header-garage').textContent =  '';
+					    rowbillId = 1;
+					    totalAmount = 0;
+		    		}
+		    		function resetFormh() 
+					{
+							document.getElementById('personal-formh').reset();
+							document.getElementById('item-formh').reset();
+							document.getElementById('bill-itemsh').innerHTML = '';
+							document.getElementById('total-amounth').textContent = '₹0';
+							document.getElementById('header-contacth').textContent = '';
+							document.getElementById('header-vehicalh').textContent = '';
+							document.getElementById('header-dateh').textContent =  '';
+							//document.getElementById('header-garage').textContent =  '';
+					    rowbillId = 1;
+					    totalAmount = 0;
+		    		}
+
+			    	function shareEnquiryWhatsApp()  
+			    	{
+			  		var message = "Dear " + name + ", your vehical " + vehicalnumber + "\n\n submitted  for \n" + messagee;
+			  		message += "."+ garagename +" -Thank you";
+
+						var encodedMessage = encodeURIComponent(message);
+						var whatsappURL = "https://api.whatsapp.com/send?phone=" + contact + "&text=" + encodedMessage;
+						window.open(whatsappURL);
+					} 
+
+					function shareEnquiryWhatsApph()  
+			    	{
+			  		var message = "Dear " + nameh + ", your vehical " + vehicalnumberh + "\n\n submitted  for \n" + messageeh;
+			  		message += "." +" -Thank you  " + garagenameh;
+
+						var encodedMessage = encodeURIComponent(message);
+						var whatsappURL = "https://api.whatsapp.com/send?phone=" + contacth + "&text=" + encodedMessage;
+						window.open(whatsappURL);
+					} 	
+			    	function sharePDFWhatsApp()  
+			    	{
+			  		var message = "Dear " + "Customer" + ", your vehical " + vehicalnumber + " is ready. Here are the bill details:\n\n" + generateTableText('print_final_bill');
+			  		message += "\n\n Bill amount: ₹" + totalAmount.toFixed(2) + ". Please collect the Vehical."+ garagename +" -Thank you";
+
+						var encodedMessage = encodeURIComponent(message);
+						var whatsappURL = "https://api.whatsapp.com/send?phone=" + contacto + "&text=" + encodedMessage;
+						window.open(whatsappURL);
+					} 
+
+					function sharePDFWhatsApph()  
+			    	{
+			  		var message = "Dear " + "Customer" + ", your vehical " + vehicalnumber + " is ready. Here are the bill details:\n\n" + generateTableText('print_final_billh');
+			  		message += "\n\n Bill amount: ₹" + totalAmount.toFixed(2) + ". Please collect the Vehical."+ garagename +" -Thank you";
+
+						var encodedMessage = encodeURIComponent(message);
+						var whatsappURL = "https://api.whatsapp.com/send?phone=" + contacto + "&text=" + encodedMessage;
+						window.open(whatsappURL);
+					} 
+					// use html table 
+  					// Generate text for the output table
+
+					function generateTableText(tableId) 
+					{
+						var table = document.getElementById(tableId);
+						var text = '';
+								  
+				// Get the second row (index 1) as column headers
+						var headerRow = table.querySelector('thead tr:nth-child(2)');
+						var headerCells = headerRow.getElementsByTagName('th');
+						var columnWidths = [];
+
+				// Calculate the maximum width for each column
+					for (var h = 0; h < headerCells.length - 1; h++) 
+					{ // Exclude the last header (action column header)
+						var cellWidth = headerCells[h].textContent.trim().length;
+						columnWidths.push(cellWidth);
 					}
-				text += '+'; //\n
 
-			// Get the table data rows
-				for (var i = 0; i < rows.length; i++) {
-						  var cells = rows[i].getElementsByTagName('td');
-						  for (var j = 0; j < cells.length - 1; j++) { // Exclude the last column (action column)
-						    text += '|' + padString(cells[j].textContent.trim(), columnWidths[j]) + ' ';
-						}
-						  text += '\n'; //|
-						}
+					// Get the table data rows
+						var rows = table.getElementsByTagName('tr');
+						  for (var i = 0; i < rows.length; i++) 
+							{
+							  var cells = rows[i].getElementsByTagName('td');
+								for (var j = 0; j < cells.length - 1; j++) 
+								{ // Exclude the last column (action column)
+									var cellWidth = cells[j].textContent.trim().length;
+									if (cellWidth > columnWidths[j]) 
+									{
+									  columnWidths[j] = cellWidth;
+									}
+								}
+							}
 
-		  // Add table border for the data rows
-				for (var h = 0; h < headerCells.length - 1; h++) 
-				{
-						   text += '+' + repeatChar('-', columnWidths[h]) + '-';
-						}
-					text += '+\n';
+						// Generate the text with equal spacing
+							for (var h = 0; h < headerCells.length - 1; h++) {
+									text += '|' + padString(headerCells[h].textContent.trim(), columnWidths[h]) + ' ';
+										  }
+								text += '|\n';
 
-					return text;
-				}
+						// Add table border for the column headers
+							for (var h = 0; h < headerCells.length - 1; h++) {
+										    text += '+' + repeatChar('-', columnWidths[h]) + '-';
+									}
+								text += '+'; //\n
 
-				function padString(str, length) {
-						var paddedString = str;
-						while (paddedString.length < length) {
-						  paddedString += ' ';
-						}
-						  return paddedString;
-						}
+							// Get the table data rows
+								for (var i = 0; i < rows.length; i++) {
+										  var cells = rows[i].getElementsByTagName('td');
+										  for (var j = 0; j < cells.length - 1; j++) { // Exclude the last column (action column)
+										    text += '|' + padString(cells[j].textContent.trim(), columnWidths[j]) + ' ';
+										}
+										  text += '\n'; //|
+										}
 
-				function repeatChar(char, times) {
-						var repeatedString = '';
-						for (var i = 0; i < times; i++) {
-						  repeatedString += char;
-						}
-					return repeatedString;
-					}		
-</script>
+						  // Add table border for the data rows
+								for (var h = 0; h < headerCells.length - 1; h++) 
+								{
+										   text += '+' + repeatChar('-', columnWidths[h]) + '-';
+										}
+									text += '+\n';
+
+									return text;
+								}
+
+								function padString(str, length) {
+										var paddedString = str;
+										while (paddedString.length < length) {
+										  paddedString += ' ';
+										}
+										  return paddedString;
+										}
+
+								function repeatChar(char, times) {
+										var repeatedString = '';
+										for (var i = 0; i < times; i++) {
+										  repeatedString += char;
+										}
+									return repeatedString;
+									}		
+
+						//function showPrintandshare(){
+						//		document.getElementById("vcheckin").className = "vcheckin_off";}
+		</script>
 </body>
 </html>
